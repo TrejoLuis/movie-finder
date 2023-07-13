@@ -1,5 +1,6 @@
 import './App.css'
 import responseResults from './mocks/goodResult.json'
+import Movies from './components/Movies.jsx'
 
 function App () {
 
@@ -22,18 +23,7 @@ function App () {
         </form>
       </header>
       <main>
-        {
-          movies 
-            ? <ul className='movies'>
-                {movies.map(movie => 
-                  <li key={movie.id}>
-                    <h3>{movie.title}</h3>
-                    <p>{movie.year}</p>
-                    <img src={movie.poster} alt={`${movie.title} poster`} />
-                  </li>)}
-              </ul>
-            : <h3>Movie/s not found</h3>
-        }
+        <Movies movies={movies}/>
       </main>
     </div>
   )
