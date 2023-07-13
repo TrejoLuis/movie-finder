@@ -12,7 +12,7 @@ function App () {
     year: movie.Year,
     poster: movie.Poster
   }))
-
+  
   return (
     <div className='app'>
       <header>

@@ -1,4 +1,4 @@
-function renderMovies(movies) {
+function MoviesList ( {movies }) {
   return (
     <ul className='movies'>
       {movies.map(movie => 
@@ -11,16 +11,13 @@ function renderMovies(movies) {
   )
 }
 
-function renderNoMovies(){
+function NoMovies (){
   return <h3>Movie/s not found</h3>
 }
 
 export default function Movies({ movies }){
+  const hasMovies = movies?.length > 0
   return (
-    <>
-      {
-        movies ? renderMovies(movies) : renderNoMovies()
-      }
-    </>
+    hasMovies ? <MoviesList movies={movies}/> : <NoMovies /> 
   )
 }
