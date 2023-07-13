@@ -1,0 +1,36 @@
+.app{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  text-align: center;
+}
+
+form{
+  display: flex;
+}
+
+main{
+  width: 100%;
+}
+.movies{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.movies li{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.movies img{
+  border-radius: 0.5rem;
+}
+
+.movies h3,
+.movies p{
+  margin: 0;
+}
