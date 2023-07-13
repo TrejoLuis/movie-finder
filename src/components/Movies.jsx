@@ -1,7 +1,7 @@
-function MoviesList ( {movies }) {
+function MoviesList ({ movies }) {
   return (
     <ul className='movies'>
-      {movies.map(movie => 
+      {movies.map(movie =>
         <li key={movie.id}>
           <h3>{movie.title}</h3>
           <p>{movie.year}</p>
@@ -11,13 +11,13 @@ function MoviesList ( {movies }) {
   )
 }
 
-function NoMovies (){
+function NoMovies () {
   return <h3>Movie/s not found</h3>
 }
 
-export default function Movies({ movies }){
+export default function Movies ({ movies }) {
   const hasMovies = movies?.length > 0
   return (
-    hasMovies ? <MoviesList movies={movies}/> : <NoMovies /> 
+    hasMovies ? <MoviesList movies={movies}/> : <NoMovies />
   )
 }
