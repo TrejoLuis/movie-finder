@@ -1,16 +1,26 @@
 import './App.css'
 import Movies from './components/Movies.jsx'
 import { useMovies } from './hooks/useMovies'
+import { useSearch } from './hooks/useSearch'
 
 function App () {
-  const { movies, error, search, updateSearch, submitChange } = useMovies()
+  const { search, error, updateSearch } = useSearch()
+  const { movies, getMovies } = useMovies({ search })
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    getMovies()
+  }
+  function handleChange (e) {
+    updateSearch(e.target.value)
+  }
 
   return (
     <div className='app'>
       <header>
         <h1>Movie Finder</h1>
-        <form onSubmit={submitChange}>
-          <input onChange={updateSearch} value={search} placeholder='Shrek, The Matrix, Harry Potter...' />
+        <form onSubmit={handleSubmit}>
+          <input onChange={handleChange} value={search} placeholder='Shrek, The Matrix, Harry Potter...' />
           <button type='submit'>Search</button>
         </form>
         {error &&
