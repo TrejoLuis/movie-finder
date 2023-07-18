@@ -9,10 +9,13 @@ function App () {
 
   function handleSubmit (e) {
     e.preventDefault()
-    getMovies()
+    getMovies({ search })
   }
   function handleChange (e) {
-    updateSearch(e.target.value)
+    const newSearch = e.target.value
+    updateSearch(newSearch)
+    console.log(newSearch)
+    getMovies( { search: newSearch})
   }
 
   return (

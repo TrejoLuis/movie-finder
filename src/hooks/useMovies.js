@@ -8,7 +8,7 @@ export function useMovies ({ search }) {
   const [error, setError] = useState(null)
   const prevSearch = useRef(search)
 
-  async function getMovies () {
+  async function getMovies ( {search}) {
     if(prevSearch.current === search) return
 
     try{

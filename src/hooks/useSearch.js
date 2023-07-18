@@ -28,7 +28,6 @@ export function useSearch () {
   function updateSearch (newSearch) {
     if (newSearch === ' ') return
     setSearch(newSearch)
-    console.log(newSearch)
   }
 
   return {
