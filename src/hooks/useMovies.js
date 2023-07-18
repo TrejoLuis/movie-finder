@@ -4,15 +4,27 @@ import { useState } from 'react'
 // Custom hook to manage fetching, data mapping, states
 export function useMovies ({ search }) {
   const [moviesRes, setMoviesRes] = useState([])
+  const [loading, setLoading] = useState()
+  const [error, setError] = useState(null)
 
-  function getMovies () {
-    console.log(search)
-    searchMovies({search})
-      .then(movies => setMoviesRes(movies))
+  async function getMovies () {
+    try{
+      setLoading(true)
+      setError(null)
+      console.log(loading)
+      const data = await searchMovies( { search })
+      setMoviesRes(data)
+    }catch(error){
+      setError(error)
+    }finally{
+      setLoading(false)
+    }
   }
 
   return {
     movies: moviesRes,
-    getMovies
+    getMovies,
+    moviesError: error,
+    loading
   }
 }
