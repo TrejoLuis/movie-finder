@@ -7,8 +7,8 @@ export function searchMovies ({ search }) {
       if (!res.ok) throw new Error(`HTTP Error: ${res.status}`)
       return res.json()
     })
-    .then(movies => {
-      return movies?.Search?.map(movie => ({
+    .then(data => {
+      return data?.Search?.map(movie => ({
         id: movie.imdbID,
         title: movie.Title,
         year: movie.Year,
