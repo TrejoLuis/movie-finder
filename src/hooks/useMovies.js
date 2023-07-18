@@ -1,17 +1,20 @@
 import { searchMovies } from '../services/movies'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 // Custom hook to manage fetching, data mapping, states
 export function useMovies ({ search }) {
   const [moviesRes, setMoviesRes] = useState([])
   const [loading, setLoading] = useState()
   const [error, setError] = useState(null)
+  const prevSearch = useRef(search)
 
   async function getMovies () {
+    if(prevSearch.current === search) return
+
     try{
       setLoading(true)
       setError(null)
-      console.log(loading)
+      prevSearch.current = search
       const data = await searchMovies( { search })
       setMoviesRes(data)
     }catch(error){
