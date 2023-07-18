@@ -9,7 +9,7 @@ API : http://www.omdbapi.com/
 - Make the movie list responsive
 
 - Avoid fetching with same input
-- Make the search automatically at typing
+- Automatically search while typing
 - Avoid continuos searching at typing ==debounce==
 
 - Add filters
