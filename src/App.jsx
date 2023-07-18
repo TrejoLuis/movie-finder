@@ -4,8 +4,8 @@ import { useMovies } from './hooks/useMovies'
 import { useSearch } from './hooks/useSearch'
 
 function App () {
-  const { search, error, updateSearch } = useSearch()
-  const { movies, getMovies } = useMovies({ search })
+  const { search, inputError, updateSearch } = useSearch()
+  const { movies, getMovies, loading } = useMovies({ search })
 
   function handleSubmit (e) {
     e.preventDefault()
@@ -23,11 +23,15 @@ function App () {
           <input onChange={handleChange} value={search} placeholder='Shrek, The Matrix, Harry Potter...' />
           <button type='submit'>Search</button>
         </form>
-        {error &&
-          <p style={{ color: 'salmon' }}>{error}</p>}
+        {inputError &&
+          <p style={{ color: 'salmon' }}>{inputError}</p>}
       </header>
       <main>
-        <Movies movies={movies}/>
+        {
+          loading
+            ? <h2>LOADING...</h2>
+            : <Movies movies={movies}/>
+        }
       </main>
     </div>
   )
