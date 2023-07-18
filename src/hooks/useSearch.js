@@ -33,7 +33,7 @@ export function useSearch () {
 
   return {
     search,
-    error,
+    inputError: error,
     updateSearch
   }
 }
